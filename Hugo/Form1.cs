@@ -6,9 +6,15 @@ namespace Hugo
 {
     public partial class Form1 : Form
     {
+        //private Button ButtonBuild;
+
         public Form1()
         {
             InitializeComponent();
+
+            //ButtonBuild = new Button();
+
+            //ButtonBuild.Click += buttonBuild_Click;
             
         }
 
@@ -22,7 +28,7 @@ namespace Hugo
         };
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCreateContent_Click(object sender, EventArgs e)
         {
             // 获取当前日期并格式化为 YYYYMMDD
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -64,6 +70,8 @@ namespace Hugo
 
         private async void buttonServer_Click(object sender, EventArgs e)
         {
+            buttonBuild.Enabled = false;
+
             ProcessStartInfo PS_Window = new ProcessStartInfo
             {
                 FileName = "C:\\Program Files\\PowerShell\\7\\pwsh.exe", // 指定要启动的文件名
@@ -77,7 +85,7 @@ namespace Hugo
             {
                 try
                 {
-                    //buttonBuild.Enable
+
                     process.Start(); // 启动 PowerShell 进程
 
                     // 向 PowerShell 发送多条命令
@@ -93,14 +101,19 @@ namespace Hugo
                     await Task.Run(() => process.WaitForExit()); // 等待 PowerShell 进程退出
 
                 }
+
+                
+
                 catch (Exception ex)
                 {
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             }
+
+            buttonBuild.Enabled = true;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void buttonBuild_Click(object sender, EventArgs e)
         {
             using (Process process = new Process { StartInfo = PSStartInfo })
             {

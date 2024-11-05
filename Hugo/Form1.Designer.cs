@@ -43,7 +43,7 @@
             this.buttonCreateContent.TabIndex = 0;
             this.buttonCreateContent.Text = "创建新Blog";
             this.buttonCreateContent.UseVisualStyleBackColor = true;
-            this.buttonCreateContent.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCreateContent.Click += new System.EventHandler(this.buttonCreateContent_Click);
             // 
             // buttonServer
             // 
@@ -65,7 +65,7 @@
             this.buttonBuild.TabIndex = 3;
             this.buttonBuild.Text = "构建网页";
             this.buttonBuild.UseVisualStyleBackColor = true;
-            this.buttonBuild.Click += new System.EventHandler(this.button1_Click_1);
+            this.buttonBuild.Click += new System.EventHandler(this.buttonBuild_Click);
             // 
             // Form1
             // 
