@@ -6,16 +6,15 @@ namespace Hugo
 {
     public partial class Form1 : Form
     {
-        //private Button ButtonBuild;
-
         public Form1()
         {
             InitializeComponent();
-
-            //ButtonBuild = new Button();
-
-            //ButtonBuild.Click += buttonBuild_Click;
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         readonly ProcessStartInfo PSStartInfo = new ProcessStartInfo
@@ -63,11 +62,6 @@ namespace Hugo
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private async void buttonServer_Click(object sender, EventArgs e)
         {
             buttonBuild.Enabled = false;
@@ -101,9 +95,7 @@ namespace Hugo
                     await Task.Run(() => process.WaitForExit()); // 等待 PowerShell 进程退出
 
                 }
-
-                
-
+               
                 catch (Exception ex)
                 {
                     Console.WriteLine($"An error occurred: {ex.Message}");
@@ -128,6 +120,44 @@ namespace Hugo
                         {
                             streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
                             streamWriter.WriteLine($"hugo --contentDir 'C:\\Users\\15641\\Documents\\Blog'"); // 获取所有服务的信息
+                        }
+                    }
+
+                    // 读取 PowerShell 命令的输出
+                    string output = process.StandardOutput.ReadToEnd();
+                    process.WaitForExit(); // 等待 PowerShell 进程退出
+
+                    // 显示输出结果（可选）
+                    MessageBox.Show(output);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+            }
+        }
+
+        private void buttonGit_Click(object sender, EventArgs e)
+        {
+            FormGit GitWindow = new FormGit();
+            GitWindow.Show();
+        }
+
+        private void buttonClean_Click(object sender, EventArgs e)
+        {
+            using (Process process = new Process { StartInfo = PSStartInfo })
+            {
+                try
+                {
+                    process.Start(); // 启动 PowerShell 进程
+
+                    // 向 PowerShell 发送多条命令
+                    using (StreamWriter streamWriter = process.StandardInput)
+                    {
+                        if (streamWriter.BaseStream.CanWrite)
+                        {
+                            streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
+                            streamWriter.WriteLine($"hugo --cleanDestinationDir --contentDir 'C:\\Users\\15641\\Documents\\Blog'"); // 获取所有服务的信息
                         }
                     }
 
