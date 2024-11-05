@@ -6,7 +6,8 @@ namespace Hugo
 {
     public partial class Form1 : Form
     {
-        private FormGit GitWindow;
+        private FormGit? GitWindow;
+        private FormCreateContent? CreateContentWindow;
 
         public Form1()
         {
@@ -28,39 +29,49 @@ namespace Hugo
             CreateNoWindow = true // 不创建窗口
         };
 
-
         private void buttonCreateContent_Click(object sender, EventArgs e)
         {
-            // 获取当前日期并格式化为 YYYYMMDD
-            string fileName = DateTime.Now.ToString("yyyyMMddHHmmss");
+            //// 获取当前日期并格式化为 YYYYMMDD
+            //string fileName = DateTime.Now.ToString("yyyyMMddHHmmss");
 
-            using (Process process = new Process { StartInfo = PSStartInfo })
+            //using (Process process = new Process { StartInfo = PSStartInfo })
+            //{
+            //    try
+            //    {
+            //        process.Start(); // 启动 PowerShell 进程
+
+            //        // 向 PowerShell 发送多条命令
+            //        using (StreamWriter streamWriter = process.StandardInput)
+            //        {
+            //            if (streamWriter.BaseStream.CanWrite)
+            //            {
+            //                streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
+            //                streamWriter.WriteLine($"hugo new content {fileName}.md --contentDir 'C:\\Users\\15641\\Documents\\Blog'"); // 获取所有服务的信息
+            //            }
+            //        }
+
+            //        // 读取 PowerShell 命令的输出
+            //        string output = process.StandardOutput.ReadToEnd();
+            //        process.WaitForExit(); // 等待 PowerShell 进程退出
+
+            //        // 显示输出结果（可选）
+            //        MessageBox.Show(output);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"An error occurred: {ex.Message}");
+            //    }
+            //}
+
+            if (CreateContentWindow is null || CreateContentWindow.IsDisposed)
             {
-                try
-                {
-                    process.Start(); // 启动 PowerShell 进程
-
-                    // 向 PowerShell 发送多条命令
-                    using (StreamWriter streamWriter = process.StandardInput)
-                    {
-                        if (streamWriter.BaseStream.CanWrite)
-                        {
-                            streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
-                            streamWriter.WriteLine($"hugo new content {fileName}.md --contentDir 'C:\\Users\\15641\\Documents\\Blog'"); // 获取所有服务的信息
-                        }
-                    }
-
-                    // 读取 PowerShell 命令的输出
-                    string output = process.StandardOutput.ReadToEnd();
-                    process.WaitForExit(); // 等待 PowerShell 进程退出
-
-                    // 显示输出结果（可选）
-                    MessageBox.Show(output);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
-                }
+                CreateContentWindow = new FormCreateContent();
+                CreateContentWindow.FormClosed += (s, args) => CreateContentWindow = null; // 处理新窗口关闭事件
+                CreateContentWindow.Show();
+            }
+            else
+            {
+                CreateContentWindow.Activate();
             }
         }
 
