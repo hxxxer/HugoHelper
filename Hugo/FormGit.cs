@@ -16,5 +16,20 @@ namespace Hugo
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPush_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCommit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

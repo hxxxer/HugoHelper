@@ -6,6 +6,8 @@ namespace Hugo
 {
     public partial class Form1 : Form
     {
+        private FormGit GitWindow;
+
         public Form1()
         {
             InitializeComponent();
@@ -139,8 +141,16 @@ namespace Hugo
 
         private void buttonGit_Click(object sender, EventArgs e)
         {
-            FormGit GitWindow = new FormGit();
-            GitWindow.Show();
+            if (GitWindow is null || GitWindow.IsDisposed)
+            {
+                GitWindow = new FormGit();
+                GitWindow.FormClosed += (s, args) => GitWindow = null; // 处理新窗口关闭事件
+                GitWindow.Show();
+            }
+            else
+            {
+                GitWindow.Activate();
+            }
         }
 
         private void buttonClean_Click(object sender, EventArgs e)
