@@ -17,7 +17,26 @@ namespace Hugo
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void FormGit_Load(object sender, EventArgs e)
+        {
+            // 初始化按钮状态
+            UpdateButtonState();
+        }
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // 更新按钮状态
+            UpdateButtonState();
+        }
+
+        private void UpdateButtonState()
+        {
+            // 根据文本框的内容更新按钮状态
+            buttonCommit.Enabled = !string.IsNullOrWhiteSpace(textBox1.Text);
+        }
+
+        private void buttonCommit_Click(object sender, EventArgs e)
         {
 
         }
@@ -27,7 +46,7 @@ namespace Hugo
 
         }
 
-        private void buttonCommit_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
 
         }

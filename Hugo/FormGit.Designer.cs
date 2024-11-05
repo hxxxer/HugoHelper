@@ -43,6 +43,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(241, 85);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -53,7 +54,6 @@
             this.label1.Size = new System.Drawing.Size(522, 34);
             this.label1.TabIndex = 1;
             this.label1.Text = "在进行Git操作前，一定记得先生成静态文件";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -64,7 +64,6 @@
             this.label2.Size = new System.Drawing.Size(368, 34);
             this.label2.TabIndex = 1;
             this.label2.Text = "不要把localhost发上去！！！";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
             // buttonAdd
             // 
@@ -75,6 +74,7 @@
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "添加全部";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonCommit
             // 
@@ -111,6 +111,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "FormGit";
             this.Text = "Git";
+            this.Load += new System.EventHandler(this.FormGit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
