@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+//using System.Collections.Generic;
+//using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Windows.Forms;
+//using System.Windows.Forms.Design;
 
 namespace Hugo
 {
@@ -30,12 +30,16 @@ namespace Hugo
 
         private void FormCreateContent_Load(object sender, EventArgs e)
         {
+            TitlePreinput();
+        }
+
+        private void TitlePreinput()
+        {
             // 获取当前日期并格式化为 YYYYMMDD
             string preinputName = DateTime.Now.ToString("yyyyMMddHHmmss");
 
             TitleInput.Text = preinputName;
         }
-
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
@@ -79,6 +83,8 @@ namespace Hugo
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             }
+
+            TitlePreinput();
 
         }
 

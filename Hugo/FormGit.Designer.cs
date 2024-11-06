@@ -34,11 +34,12 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCommit = new System.Windows.Forms.Button();
             this.buttonPush = new System.Windows.Forms.Button();
+            this.buttonGitManual = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(250, 158);
+            this.textBox1.Location = new System.Drawing.Point(380, 205);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(241, 85);
@@ -49,7 +50,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(134, 24);
+            this.label1.Location = new System.Drawing.Point(64, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(522, 34);
             this.label1.TabIndex = 1;
@@ -59,7 +60,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(211, 68);
+            this.label2.Location = new System.Drawing.Point(141, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(368, 34);
             this.label2.TabIndex = 1;
@@ -68,9 +69,9 @@
             // buttonAdd
             // 
             this.buttonAdd.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonAdd.Location = new System.Drawing.Point(147, 291);
+            this.buttonAdd.Location = new System.Drawing.Point(230, 132);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(111, 56);
+            this.buttonAdd.Size = new System.Drawing.Size(124, 66);
             this.buttonAdd.TabIndex = 2;
             this.buttonAdd.Text = "添加全部";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -79,9 +80,9 @@
             // buttonCommit
             // 
             this.buttonCommit.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCommit.Location = new System.Drawing.Point(305, 291);
+            this.buttonCommit.Location = new System.Drawing.Point(230, 215);
             this.buttonCommit.Name = "buttonCommit";
-            this.buttonCommit.Size = new System.Drawing.Size(111, 56);
+            this.buttonCommit.Size = new System.Drawing.Size(124, 66);
             this.buttonCommit.TabIndex = 2;
             this.buttonCommit.Text = "提交";
             this.buttonCommit.UseVisualStyleBackColor = true;
@@ -90,19 +91,31 @@
             // buttonPush
             // 
             this.buttonPush.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonPush.Location = new System.Drawing.Point(461, 291);
+            this.buttonPush.Location = new System.Drawing.Point(230, 307);
             this.buttonPush.Name = "buttonPush";
-            this.buttonPush.Size = new System.Drawing.Size(111, 56);
+            this.buttonPush.Size = new System.Drawing.Size(124, 66);
             this.buttonPush.TabIndex = 2;
             this.buttonPush.Text = "推送";
             this.buttonPush.UseVisualStyleBackColor = true;
             this.buttonPush.Click += new System.EventHandler(this.buttonPush_Click);
             // 
+            // buttonGitManual
+            // 
+            this.buttonGitManual.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonGitManual.Location = new System.Drawing.Point(30, 215);
+            this.buttonGitManual.Name = "buttonGitManual";
+            this.buttonGitManual.Size = new System.Drawing.Size(124, 66);
+            this.buttonGitManual.TabIndex = 3;
+            this.buttonGitManual.Text = "手动Git";
+            this.buttonGitManual.UseVisualStyleBackColor = true;
+            this.buttonGitManual.Click += new System.EventHandler(this.buttonGitManual_Click);
+            // 
             // FormGit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(657, 403);
+            this.Controls.Add(this.buttonGitManual);
             this.Controls.Add(this.buttonPush);
             this.Controls.Add(this.buttonCommit);
             this.Controls.Add(this.buttonAdd);
@@ -125,5 +138,6 @@
         private Button buttonAdd;
         private Button buttonCommit;
         private Button buttonPush;
+        private Button buttonGitManual;
     }
 }

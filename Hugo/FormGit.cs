@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,36 @@ namespace Hugo
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void buttonGitManual_Click(object sender, EventArgs e)
+        {
+            //string script = $"Set-Location -Path 'D:\\Tools\\hugot\\BST'";
+            //ProcessStartInfo PSGitInfo = new ProcessStartInfo
+            //{
+            //    FileName = "C:\\Program Files\\PowerShell\\7\\pwsh.exe", // 指定要启动的文件名
+            //    Arguments = $"-Command \"{script}\";read-host",
+            //    //RedirectStandardInput = true, // 重定向标准输入
+            //    RedirectStandardOutput = true, // 重定向标准输出
+            //    UseShellExecute = false, // 不使用系统外壳程序启动
+            //    CreateNoWindow = false // 不创建窗口
+            //};
+
+            //using (Process process = new Process { StartInfo = PSGitInfo })
+            //{
+            //    try
+            //    {
+            //        process.Start();
+
+            //        //process.WaitForExit();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"An error occurred: {ex.Message}");
+            //    }
+            //}
+
 
         }
     }
