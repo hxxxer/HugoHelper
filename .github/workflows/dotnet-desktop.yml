@@ -46,7 +46,7 @@ jobs:
 
   build:
     
-    runs-on: windows-latest  # For a list of available runner types, refer to
+    runs-on: ubuntu-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
@@ -83,7 +83,7 @@ jobs:
     - name: Zip the Build
       run: zip -r $env:ReleaseZipName ./AppName/bin/Release/net6.0-windows/win-x64/ 
       env:
-        ReleaseZipName: HugoHelper
+        ReleaseZipName: HugoHelper.zip
       
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
