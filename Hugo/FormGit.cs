@@ -54,30 +54,31 @@ namespace Hugo
 
         private void buttonGitManual_Click(object sender, EventArgs e)
         {
-            //string script = $"Set-Location -Path 'D:\\Tools\\hugot\\BST'";
-            //ProcessStartInfo PSGitInfo = new ProcessStartInfo
-            //{
-            //    FileName = "C:\\Program Files\\PowerShell\\7\\pwsh.exe", // 指定要启动的文件名
-            //    Arguments = $"-Command \"{script}\";read-host",
-            //    //RedirectStandardInput = true, // 重定向标准输入
-            //    RedirectStandardOutput = true, // 重定向标准输出
-            //    UseShellExecute = false, // 不使用系统外壳程序启动
-            //    CreateNoWindow = false // 不创建窗口
-            //};
+            string script = $"Set-Location {AppConfig.HugoRootDir}";
 
-            //using (Process process = new Process { StartInfo = PSGitInfo })
-            //{
-            //    try
-            //    {
-            //        process.Start();
+            ProcessStartInfo PSGitInfo = new ProcessStartInfo
+            {
+                FileName = "C:\\Program Files\\PowerShell\\7\\pwsh.exe", // 指定要启动的文件名
+                Arguments = $"-Command \"{script}\";read-host",
+                RedirectStandardInput = true, // 重定向标准输入
+                RedirectStandardOutput = false, // 重定向标准输出
+                UseShellExecute = true, // 不使用系统外壳程序启动
+                CreateNoWindow = false // 不创建窗口
+            };
 
-            //        //process.WaitForExit();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine($"An error occurred: {ex.Message}");
-            //    }
-            //}
+            using (Process process = new Process { StartInfo = PSGitInfo })
+            {
+                try
+                {
+                    process.Start();
+
+                    //process.WaitForExit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+            }
 
 
         }

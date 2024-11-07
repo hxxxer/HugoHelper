@@ -1,6 +1,8 @@
 using System;
 using System.Diagnostics;
+using System.Configuration;
 using System.IO;
+using System.CodeDom.Compiler;
 
 namespace Hugo
 {
@@ -17,6 +19,15 @@ namespace Hugo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            AppConfig.Initialize();
+
+            if (string.IsNullOrWhiteSpace(AppConfig.HugoRootDir))
+            {
+                FormError formError = new FormError();
+                formError.ShowDialog();
+
+                Close();
+            }
 
         }
 
@@ -69,8 +80,8 @@ namespace Hugo
                     {
                         if (streamWriter.BaseStream.CanWrite)
                         {
-                            streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
-                            streamWriter.WriteLine("hugo server --port 6138 --contentDir \"C:\\Users\\15641\\Documents\\Blog\""); // 获取所有服务的信息
+                            streamWriter.WriteLine($"Set-Location {AppConfig.HugoRootDir}");
+                            streamWriter.WriteLine($"hugo server {AppConfig.Port} {AppConfig.BlogRootDir} {AppConfig.ThemesDir}");
                         }
                     }
 
@@ -100,8 +111,8 @@ namespace Hugo
                     {
                         if (streamWriter.BaseStream.CanWrite)
                         {
-                            streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
-                            streamWriter.WriteLine($"hugo --contentDir 'C:\\Users\\15641\\Documents\\Blog'"); // 获取所有服务的信息
+                            streamWriter.WriteLine($"Set-Location {AppConfig.HugoRootDir}");
+                            streamWriter.WriteLine($"hugo {AppConfig.BlogRootDir} {AppConfig.ThemesDir}");
                         }
                     }
 
@@ -146,8 +157,8 @@ namespace Hugo
                     {
                         if (streamWriter.BaseStream.CanWrite)
                         {
-                            streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
-                            streamWriter.WriteLine($"hugo --cleanDestinationDir --contentDir 'C:\\Users\\15641\\Documents\\Blog'"); // 获取所有服务的信息
+                            streamWriter.WriteLine($"Set-Location {AppConfig.HugoRootDir}"); // 获取所有进程的信息
+                            streamWriter.WriteLine($"hugo --cleanDestinationDir {AppConfig.BlogRootDir} {AppConfig.ThemesDir}"); // 获取所有服务的信息
                         }
                     }
 

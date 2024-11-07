@@ -66,8 +66,8 @@ namespace Hugo
                     {
                         if (streamWriter.BaseStream.CanWrite)
                         {
-                            streamWriter.WriteLine("Set-Location -Path 'D:\\Tools\\hugot\\BST'"); // 获取所有进程的信息
-                            streamWriter.WriteLine($"hugo new content {fileName}.md --contentDir 'C:\\Users\\15641\\Documents\\Blog'"); // 获取所有服务的信息
+                            streamWriter.WriteLine($"Set-Location {AppConfig.HugoRootDir}");
+                            streamWriter.WriteLine($"hugo new content {fileName}.md {AppConfig.BlogRootDir}");
                         }
                     }
 

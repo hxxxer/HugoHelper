@@ -34,16 +34,17 @@
             // 
             // TitleInput
             // 
-            this.TitleInput.Location = new System.Drawing.Point(26, 25);
+            this.TitleInput.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TitleInput.Location = new System.Drawing.Point(27, 25);
             this.TitleInput.Name = "TitleInput";
-            this.TitleInput.Size = new System.Drawing.Size(350, 30);
+            this.TitleInput.Size = new System.Drawing.Size(387, 39);
             this.TitleInput.TabIndex = 0;
             this.TitleInput.TextChanged += new System.EventHandler(this.TitleInput_TextChanged);
             // 
             // buttonCreate
             // 
             this.buttonCreate.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonCreate.Location = new System.Drawing.Point(129, 83);
+            this.buttonCreate.Location = new System.Drawing.Point(145, 83);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(151, 56);
             this.buttonCreate.TabIndex = 1;
@@ -53,9 +54,10 @@
             // 
             // FormCreateContent
             // 
+            this.AcceptButton = this.buttonCreate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 168);
+            this.ClientSize = new System.Drawing.Size(443, 168);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.TitleInput);
             this.Name = "FormCreateContent";
