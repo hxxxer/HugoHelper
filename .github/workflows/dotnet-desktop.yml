@@ -3,9 +3,8 @@ name: HugoHelper Build
 on:
   push:
     branches: [ "master"]
-    tag:
-      - v*
-
+    tags:
+    - v*
 jobs:
 
   build:
