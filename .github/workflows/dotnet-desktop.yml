@@ -101,4 +101,4 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          ${{ github.workspace }}\$env:ReleaseZipName
+          ${{ github.workspace }}\HugoHelper.zip
