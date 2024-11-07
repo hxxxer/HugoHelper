@@ -96,6 +96,7 @@ jobs:
         tag_name: ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
         body: TODO New Release.
+        makelatest: true
         draft: false
         prerelease: false
         files: |
