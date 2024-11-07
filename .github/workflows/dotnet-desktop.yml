@@ -84,14 +84,14 @@ jobs:
     - name: Zip the Build
       run: |
         $sourceFolder = "${{ github.workspace }}\Hugo\bin\Release\net6.0-windows\win-x64"
-        $zipFilePath = "${{ github.workspace }}\$env:ReleaseZipName"
+        $zipFilePath = "${{ github.workspace }}\HugoHelper.zip"
         Compress-Archive -Path $sourceFolder -DestinationPath $zipFilePath -Force
       shell: pwsh 
       
       
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
-      if: startsWith(github.ref, 'refs/tags/')
+      # if: startsWith(github.ref, 'refs/tags/')
       with:
         token: ${{ secrets.PB_TOKEN }}
         tag_name: ${{ github.ref_name }}
