@@ -45,7 +45,7 @@ on:
 jobs:
 
   build:
-
+    
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
@@ -73,7 +73,7 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-     run: dotnet restore
+      run: dotnet restore
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
