@@ -82,7 +82,7 @@ jobs:
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Build /p:Configuration=release
-      env:
+
         
     - name: Zip the Build
       run: zip -r $env:ReleaseZipName ./AppName/bin/Release/net6.0-windows/win-x64/ 
