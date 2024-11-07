@@ -63,7 +63,7 @@ namespace Hugo
             {
                 FileName = "C:\\Program Files\\PowerShell\\7\\pwsh.exe", // 指定要启动的文件名
                 RedirectStandardInput = true, // 重定向标准输入
-                RedirectStandardOutput = false, // 重定向标准输出
+                RedirectStandardOutput = false,
                 UseShellExecute = false, // 不使用系统外壳程序启动
                 CreateNoWindow = false // 创建窗口
             };
