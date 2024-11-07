@@ -46,12 +46,13 @@ jobs:
 
   build:
     
-    runs-on: ubuntu-latest  # For a list of available runner types, refer to
+    runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
       Solution_Name: Hugo.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: Hugo\HugoHelper.csproj                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      ReleaseZipName: HugoHelper.zip
       # Wap_Project_Directory: your-wap-project-directory-name    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
       # Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
@@ -81,20 +82,21 @@ jobs:
 
         
     - name: Zip the Build
-      run: zip -r $env:ReleaseZipName ./AppName/bin/Release/net6.0-windows/win-x64/ 
-      env:
-        ReleaseZipName: HugoHelper.zip
+      run: |
+        $sourceFolder = "${{ github.workspace }}\Hugo\bin\Release\net6.0-windows\win-x64"
+        $zipFilePath = "${{ github.workspace }}\$env:ReleaseZipName"
+        Compress-Archive -Path $sourceFolder -DestinationPath $zipFilePath -Force
+      shell: pwsh 
+      
       
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        tag_name: ${{ github.ref }}
-        name: Release ${{ github.ref }}
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ github.ref_name }}
         body: TODO New Release.
         draft: false
         prerelease: false
         files: |
-          HugoHelper.zip
-
-    
+          ${{ github.workspace }}\$env:ReleaseZipName
