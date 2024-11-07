@@ -10,7 +10,7 @@ jobs:
 
   build:
     
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     env:
       Solution_Name: Hugo.sln
@@ -33,26 +33,28 @@ jobs:
 
 
     # Add  MSBuild to the PATH
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
+    # - name: Setup MSBuild.exe
+    #   uses: microsoft/setup-msbuild@v2
 
 
     # Execute all unit tests in the solution
-    - name: Execute unit tests
+    - name: Install dependencies
       run: dotnet restore
 
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Build /p:Configuration=release
+      # run: msbuild $env:Solution_Name /t:Build /p:Configuration=release
+      run: dotnet build --configuration Release --no-restore
  
  
     - name: Zip the Build
-      run: |
-        $sourceFolder = "${{ github.workspace }}\Hugo\bin\Release\net6.0-windows\win-x64"
-        $zipFilePath = "${{ github.workspace }}\HugoHelper.zip"
-        Compress-Archive -Path $sourceFolder -DestinationPath $zipFilePath -Force
-      shell: pwsh 
+      # run: |
+      #   $sourceFolder = "${{ github.workspace }}\Hugo\bin\Release\net6.0-windows\win-x64"
+      #   $zipFilePath = "${{ github.workspace }}\HugoHelper.zip"
+      #   Compress-Archive -Path $sourceFolder -DestinationPath $zipFilePath -Force
+      # shell: pwsh 
+      run: zip -r HugoHelper.zip ./Hugo/bin/Release/net6.0-windows/win-x64
       
       
     - name: Create and Upload Release
@@ -67,4 +69,4 @@ jobs:
         draft: false
         prerelease: false
         files: |
-          ${{ github.workspace }}\HugoHelper.zip
+          HugoHelper.zip
