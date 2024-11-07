@@ -58,6 +58,7 @@ namespace Hugo
         private async void buttonServer_Click(object sender, EventArgs e)
         {
             buttonBuild.Enabled = false;
+            buttonServer.Enabled = false;
 
             ProcessStartInfo PS_Window = new ProcessStartInfo
             {
@@ -96,6 +97,7 @@ namespace Hugo
             }
 
             buttonBuild.Enabled = true;
+            buttonServer.Enabled = true;
         }
 
         private void buttonBuild_Click(object sender, EventArgs e)
