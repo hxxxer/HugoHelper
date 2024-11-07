@@ -146,6 +146,8 @@ namespace Hugo
 
         private void buttonClean_Click(object sender, EventArgs e)
         {
+            Opacity= 0.91;
+
             using (Process process = new Process { StartInfo = PSStartInfo })
             {
                 try
@@ -173,6 +175,8 @@ namespace Hugo
                 {
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
+
+                Opacity = 1;
             }
         }
     }
