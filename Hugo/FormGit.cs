@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+//using System.Drawing;
+//using System.IO;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Windows.Forms;
 
 namespace Hugo
 {
@@ -54,15 +55,14 @@ namespace Hugo
 
         private void buttonGitManual_Click(object sender, EventArgs e)
         {
-            string script = $"Set-Location {AppConfig.HugoRootDir}";
+            string script = $"Set-Location {AppConfig.HugoRootDir};cd public";
 
             ProcessStartInfo PSGitInfo = new ProcessStartInfo
             {
-                FileName = "C:\\Program Files\\PowerShell\\7\\pwsh.exe", // 指定要启动的文件名
-                Arguments = $"-Command \"{script}\";read-host",
-                RedirectStandardInput = true, // 重定向标准输入
+                FileName = "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+                Arguments = $"-NoExit -Command {script}",
                 RedirectStandardOutput = false, // 重定向标准输出
-                UseShellExecute = true, // 不使用系统外壳程序启动
+                UseShellExecute = false, // 不使用系统外壳程序启动
                 CreateNoWindow = false // 不创建窗口
             };
 
@@ -72,7 +72,6 @@ namespace Hugo
                 {
                     process.Start();
 
-                    //process.WaitForExit();
                 }
                 catch (Exception ex)
                 {
