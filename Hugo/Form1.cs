@@ -161,8 +161,8 @@ namespace Hugo
                     {
                         if (streamWriter.BaseStream.CanWrite)
                         {
-                            streamWriter.WriteLine($"Set-Location {AppConfig.HugoRootDir}"); // 获取所有进程的信息
-                            streamWriter.WriteLine($"hugo --cleanDestinationDir {AppConfig.BlogRootDir} {AppConfig.ThemesDir}"); // 获取所有服务的信息
+                            streamWriter.WriteLine($"Set-Location {AppConfig.HugoRootDir}");
+                            streamWriter.WriteLine($"hugo --cleanDestinationDir {AppConfig.BlogRootDir} {AppConfig.ThemesDir}");
                         }
                     }
 
