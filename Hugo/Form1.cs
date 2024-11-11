@@ -102,6 +102,8 @@ namespace Hugo
 
         private void buttonBuild_Click(object sender, EventArgs e)
         {
+            Opacity = 0.91;
+
             using (Process process = new Process { StartInfo = PSStartInfo })
             {
                 try
@@ -130,6 +132,8 @@ namespace Hugo
                     Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             }
+
+            Opacity= 1;
         }
 
         private void buttonGit_Click(object sender, EventArgs e)
@@ -179,6 +183,51 @@ namespace Hugo
                 }
 
                 Opacity = 1;
+            }
+        }
+
+        private void btnBlogDir_Click(object sender, EventArgs e)
+        {
+            string BlogPath = AppConfig.BlogRootDirNoPrefix;
+            if (string.IsNullOrEmpty(BlogPath)) BlogPath = $"{AppConfig.HugoRootDirNoPrefix}/content";
+
+            ProcessStartInfo ExplorerInfo = new()
+            {
+                FileName = "explorer.exe",
+                Arguments = BlogPath
+            };
+
+            try
+            {
+                using Process process = new() { StartInfo = ExplorerInfo };
+
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+        private void btnHugoDir_Click(object sender, EventArgs e)
+        {
+            string HugoPath = AppConfig.HugoRootDirNoPrefix;
+
+            ProcessStartInfo ExplorerInfo = new()
+            {
+                FileName = "explorer.exe",
+                Arguments = HugoPath
+            };
+
+            try
+            {
+                using Process process = new() { StartInfo = ExplorerInfo };
+
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
     }

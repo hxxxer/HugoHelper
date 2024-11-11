@@ -10,18 +10,22 @@ namespace Hugo
         public static string? BlogRootDir { get; private set; }
         public static string? Port { get; private set; }
         public static string? ThemesDir { get; private set; }
+        public static string? HugoRootDirNoPrefix { get; private set; }
+        public static string? BlogRootDirNoPrefix { get; private set; }
+        public static string? PortNoPrefix { get; private set; }
+        public static string? ThemesDirNoPrefix { get; private set; }
 
         public static void Initialize()
         {
-            HugoRootDir = ConfigurationManager.AppSettings["HugoRootDir"] ?? string.Empty;
-            BlogRootDir = ConfigurationManager.AppSettings["BlogRootDir"] ?? string.Empty;
-            Port = ConfigurationManager.AppSettings["Port"] ?? string.Empty;
-            ThemesDir = ConfigurationManager.AppSettings["ThemesDir"] ?? string.Empty;
+            HugoRootDirNoPrefix = ConfigurationManager.AppSettings["HugoRootDir"] ?? string.Empty;
+            BlogRootDirNoPrefix = ConfigurationManager.AppSettings["BlogRootDir"] ?? string.Empty;
+            PortNoPrefix = ConfigurationManager.AppSettings["Port"] ?? string.Empty;
+            ThemesDirNoPrefix = ConfigurationManager.AppSettings["ThemesDir"] ?? string.Empty;
 
-            HugoRootDir = AddPrefixIfNotEmpty(HugoRootDir, "-Path");
-            BlogRootDir = AddPrefixIfNotEmpty(BlogRootDir, "--contentDir");
-            Port = AddPrefixIfNotEmpty(Port, "--port");
-            ThemesDir = AddPrefixIfNotEmpty(ThemesDir, "--themesDir");
+            HugoRootDir = AddPrefixIfNotEmpty(HugoRootDirNoPrefix, "-Path");
+            BlogRootDir = AddPrefixIfNotEmpty(BlogRootDirNoPrefix, "--contentDir");
+            Port = AddPrefixIfNotEmpty(PortNoPrefix, "--port");
+            ThemesDir = AddPrefixIfNotEmpty(ThemesDirNoPrefix, "--themesDir");
 
         }
 

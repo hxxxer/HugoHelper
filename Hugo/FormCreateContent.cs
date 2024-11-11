@@ -43,6 +43,8 @@ namespace Hugo
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
+            Opacity = 0.91;
+
             string fileName;
 
             if (string.IsNullOrWhiteSpace(TitleInput.Text))
@@ -85,7 +87,7 @@ namespace Hugo
             }
 
             TitlePreinput();
-
+            Opacity= 1;
         }
 
         private void TitleInput_TextChanged(object sender, EventArgs e)

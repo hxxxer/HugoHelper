@@ -34,6 +34,9 @@
             this.buttonBuild = new System.Windows.Forms.Button();
             this.buttonGit = new System.Windows.Forms.Button();
             this.buttonClean = new System.Windows.Forms.Button();
+            this.btnBlogDir = new System.Windows.Forms.Button();
+            this.btnHugoDir = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonCreateContent
@@ -91,11 +94,46 @@
             this.buttonClean.UseVisualStyleBackColor = true;
             this.buttonClean.Click += new System.EventHandler(this.buttonClean_Click);
             // 
+            // btnBlogDir
+            // 
+            this.btnBlogDir.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnBlogDir.Location = new System.Drawing.Point(47, 497);
+            this.btnBlogDir.Name = "btnBlogDir";
+            this.btnBlogDir.Size = new System.Drawing.Size(145, 64);
+            this.btnBlogDir.TabIndex = 6;
+            this.btnBlogDir.Text = "打开Blog";
+            this.btnBlogDir.UseVisualStyleBackColor = true;
+            this.btnBlogDir.Click += new System.EventHandler(this.btnBlogDir_Click);
+            // 
+            // btnHugoDir
+            // 
+            this.btnHugoDir.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHugoDir.Location = new System.Drawing.Point(198, 497);
+            this.btnHugoDir.Name = "btnHugoDir";
+            this.btnHugoDir.Size = new System.Drawing.Size(145, 64);
+            this.btnHugoDir.TabIndex = 7;
+            this.btnHugoDir.Text = "打开项目";
+            this.btnHugoDir.UseVisualStyleBackColor = true;
+            this.btnHugoDir.Click += new System.EventHandler(this.btnHugoDir_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(134, 457);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 30);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "打开文件夹";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 490);
+            this.ClientSize = new System.Drawing.Size(390, 584);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnHugoDir);
+            this.Controls.Add(this.btnBlogDir);
             this.Controls.Add(this.buttonClean);
             this.Controls.Add(this.buttonGit);
             this.Controls.Add(this.buttonBuild);
@@ -106,6 +144,7 @@
             this.Text = "Hugo";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -116,5 +155,8 @@
         private Button buttonBuild;
         private Button buttonGit;
         private Button buttonClean;
+        private Button btnBlogDir;
+        private Button btnHugoDir;
+        private Label label1;
     }
 }
